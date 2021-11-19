@@ -7,9 +7,7 @@ import employeeData from './components/mockData.js'
 function App() {
   let [ employees, setEmployees ] = useState(employeeData);
   let jobTypes = {};
-  let jobs =[];
   let genderTypes = {};
-  let genders =[];
 
   const jobTypeData = {
     labels: [],
@@ -66,33 +64,19 @@ function App() {
     }
   }
 
-  const data = {
-    labels: [42,32,53,23],
-    datasets: [
-      {
-        label: 'Employees By Gender',
-        backgroundColor: [
-          'rgba(75,192,192,1)',
-          'rgba(133,54,54,1)'
-      ],
-        borderColor: 'rgba(0,0,0,1)',
-        borderWidth: 2,
-        data: []
-      }
-    ]
-  }
 
   jobType();
-  console.log(jobs)
 
   return (
     <div className="App" >
-      <div style={{display: "inline-flex", justifyContent: "center"}}>
+      <div className="Table" style={{display: "inline-flex", justifyContent: "center"}}>
       <EmployeeTable employees={employees}/>
       </div>
+
       <div style={{display: "flex", justifyContent: "space-evenly", alignItems: "center"}}>
-        <div style={{height: "500px", width: "400px"}}>
+        <div>
           <Pie
+              className='Chart'
               data={jobTypeData}
               options={{
                 title:{
@@ -107,8 +91,9 @@ function App() {
               }}
             />
           </div>
-          <div style={{height: "500px", width: "400px"}}>
+          <div>
             <Bar
+              className="Chart"
               data={genderData}
               options={{
                 title:{
@@ -121,6 +106,7 @@ function App() {
                   position:'left'
                 },
                 responsive: true,
+                maintainAspectRatio: false
               }}
             />
           </div>

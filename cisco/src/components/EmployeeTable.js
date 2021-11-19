@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import employeeData from './mockData.js';
 import Employee from './Employee.js';
+import '../App.css'
 
 let EmployeeTable = (props) => {
   let  employeeData  = props.employees;
@@ -25,7 +26,8 @@ let EmployeeTable = (props) => {
   return (
     <div>
       <table>
-        <tbody>
+
+      <thead>
         <tr>
           <th>
               <button type="button" onClick={() => setSortedField('name')}>
@@ -48,6 +50,8 @@ let EmployeeTable = (props) => {
             </button>
           </th>
         </tr>
+        </thead>
+        <tbody>
       { sortedData.map( (employee) => {
         return (
           <Employee employee={employee} />

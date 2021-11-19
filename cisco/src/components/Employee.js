@@ -2,6 +2,10 @@ import React from 'react';
 
 
 let Employee = (props) => {
+  let rowStyle = {
+
+  }
+  console.log(props.employee)
   return (
     <tr>
       <td>{props.employee.name}</td>
@@ -11,5 +15,7 @@ let Employee = (props) => {
     </tr>
   )
 }
+
+
 
 export default Employee;
