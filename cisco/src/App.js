@@ -87,7 +87,7 @@ function App() {
 
   return (
     <div className="App" >
-      <div style={{margin: "auto", width: "50%"}}>
+      <div style={{display: "inline-flex", justifyContent: "center"}}>
       <EmployeeTable employees={employees}/>
       </div>
       <div style={{display: "flex", justifyContent: "space-evenly", alignItems: "center"}}>

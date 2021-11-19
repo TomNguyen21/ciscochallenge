@@ -3,19 +3,52 @@ import React, { useState, useEffect } from 'react';
 import Employee from './Employee.js';
 
 let EmployeeTable = (props) => {
+  let  employeeData  = props.employees;
+  let sortedData = [...employeeData];
 
+
+  let [ sortedField, setSortedField ] = useState(null);
+
+  if (sortedField !== null){
+    if (sortedField === "tenure") {
+      sortedData.sort( (a,b) => {
+        return a[sortedField] - b[sortedField]
+      })
+    } else {
+      sortedData.sort( (a, b) => {
+        // strings are sorted differently from integers
+        return a[sortedField].localeCompare(b[sortedField])
+      })
+    }
+  }
 
   return (
     <div>
       <table>
         <tbody>
         <tr>
-          <th>Name</th>
-          <th>Job Title</th>
-          <th>Tenure</th>
-          <th>Gender</th>
+          <th>
+              <button type="button" onClick={() => setSortedField('name')}>
+                Name
+              </button>
+            </th>
+          <th>
+            <button type="button" onClick={() => setSortedField('jobTitle')}>
+              Job Title
+            </button>
+          </th>
+          <th>
+            <button type="button" onClick={() => setSortedField('tenure')}>
+              Tenure
+            </button>
+          </th>
+          <th>
+            <button type="button" onClick={() => setSortedField('gender')}>
+              Gender
+            </button>
+          </th>
         </tr>
-      { props.employees.map( (employee) => {
+      { sortedData.map( (employee) => {
         return (
           <Employee employee={employee} />
         )
@@ -28,6 +61,3 @@ let EmployeeTable = (props) => {
 
 export default EmployeeTable;
 
-// {currentPage.map( (place) =>
-//   <MorePlacesEntry key={place.propertyId} place={place} />
-// )}
