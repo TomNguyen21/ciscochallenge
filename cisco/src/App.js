@@ -2,31 +2,37 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
 import EmployeeTable from './components/EmployeeTable.js';
-import employeeData from './components/mockData.js'
+import employeeData from './components/mockData.js';
+import Modal from './components/AddPersonModal.js';
 
 function App() {
   let [ employees, setEmployees ] = useState(employeeData);
+  let [ showModal, setShowModal ] = useState(false);
   let jobTypes = {};
   let genderTypes = {};
 
+  const addPerson = (person) => {
+    setEmployees([person, ...employees]);
+    jobType();
+  }
   const jobTypeData = {
     labels: [],
     datasets: [
       {
         label: 'Employees By Job Type',
         backgroundColor: [
-          '#B21F00',
-          '#C9DE00',
-          '#2FDE00',
-          '#00A6B4',
-          '#6800B4'
+          '#eb5757',
+          '#56ccf2',
+          '#be79ff',
+          '#f2c94c',
+          '#50cc85',
         ],
         hoverBackgroundColor: [
-        '#501800',
-        '#4B5000',
-        '#175000',
-        '#003350',
-        '#35014F'
+        '#ce4c4c',
+        '#41b1d6',
+        '#8f59c1',
+        '#c5a441',
+        '#3d9f67',
         ],
         data: []
       }
@@ -38,11 +44,9 @@ function App() {
       {
         label: 'Employees By Gender',
         backgroundColor: [
-          'rgba(75,192,192,1)',
-          'rgba(133,54,54,1)'
+          '#ff8686',
+          '#0381dc'
       ],
-        borderColor: 'rgba(0,0,0,1)',
-        borderWidth: 2,
         data: []
       }
     ]
@@ -63,12 +67,14 @@ function App() {
       genderData.datasets[0].data = [genderTypes[gender], ...genderData.datasets[0].data];
     }
   }
-
-
   jobType();
+
 
   return (
     <div className="App" >
+
+      <button className="Add-Person" onClick={() => setShowModal(true)}>Add Person</button>
+      <Modal show={showModal} onClose={ () => setShowModal(false)} addPerson={ (e) => addPerson(e)}/>
       <div className="Table" style={{display: "inline-flex", justifyContent: "center"}}>
       <EmployeeTable employees={employees}/>
       </div>

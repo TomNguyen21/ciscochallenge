@@ -10,9 +10,7 @@ let Modal = (props) => {
   });
 
   let handleChange = (e) => {
-    console.log(e.target.name, e.target.value)
     setNewPerson({...newPerson, [e.target.name]: e.target.value})
-    console.log(newPerson)
   }
 
   if (!props.show) return null;

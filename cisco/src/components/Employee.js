@@ -5,7 +5,6 @@ let Employee = (props) => {
   let rowStyle = {
 
   }
-  console.log(props.employee)
   return (
     <tr>
       <td>{props.employee.name}</td>
