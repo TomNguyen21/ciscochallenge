@@ -9,13 +9,27 @@ let Modal = (props) => {
     gender: '',
   });
 
+
   let handleChange = (e) => {
     setNewPerson({...newPerson, [e.target.name]: e.target.value})
   }
 
+  let handleSubmit = (e) => {
+    fetch('/addemployee', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newPerson)
+    })
+      .then((res) => res.json())
+      .then((data) => console.log('Success:', data))
+      .catch((err) => console.error('Failed:', err));
+  }
+
   if (!props.show) return null;
   return (
-    <form className={"Modal"}>
+    <form className={"Modal"} onSubmit={handleSubmit}>
       <div className={'Form'}>
         <label>Name</label>
         <input type="text" name="name" onChange={(e) => handleChange(e)}/>
@@ -26,8 +40,8 @@ let Modal = (props) => {
         <label>Gender</label>
         <input type="text" name="gender" onChange={(e) => handleChange(e)}/>
         <div className={"Modal-Buttons"}>
-          <button className={"Add-Person"} type="button" onClick={() => {props.addPerson(newPerson);console.log(newPerson); props.onClose()}}>Add Person</button>
-          <button className={"Add-Person"} type="button" onClick={() => props.onClose()}>Close</button>
+          <button className={"form-button1"} type="submit" value="Submit">Add Person</button>
+          <button className={"form-button1"} type="button" onClick={() => props.onClose()}>Close</button>
         </div>
       </div>
     </form>
@@ -36,3 +50,5 @@ let Modal = (props) => {
 }
 
 export default Modal;
+
+// onClick={() => {props.addPerson(newPerson);console.log(newPerson);}}

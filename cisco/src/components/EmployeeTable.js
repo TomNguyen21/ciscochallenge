@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 // import employeeData from './mockData.js';
 import Employee from './Employee.js';
 import '../App.css'
@@ -30,22 +30,22 @@ let EmployeeTable = (props) => {
       <thead>
         <tr>
           <th>
-              <button type="button" onClick={() => setSortedField('name')}>
+              <button className="Column-Button" type="button" onClick={() => setSortedField('name')}>
                 Name
               </button>
             </th>
           <th>
-            <button type="button" onClick={() => setSortedField('jobTitle')}>
+            <button className="Column-Button" type="button" onClick={() => setSortedField('jobTitle')}>
               Job Title
             </button>
           </th>
           <th>
-            <button type="button" onClick={() => setSortedField('tenure')}>
+            <button className="Column-Button" type="button" onClick={() => setSortedField('tenure')}>
               Tenure
             </button>
           </th>
           <th>
-            <button type="button" onClick={() => setSortedField('gender')}>
+            <button className="Column-Button" type="button" onClick={() => setSortedField('gender')}>
               Gender
             </button>
           </th>
@@ -54,7 +54,7 @@ let EmployeeTable = (props) => {
         <tbody>
       { sortedData.map( (employee) => {
         return (
-          <Employee employee={employee} />
+          <Employee key={employee._id} employee={employee} />
         )
       })}
       </tbody>

@@ -2,11 +2,25 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-button {
-  background: rgb(170, 170, 170);
-  width: 100%;
-  text-align: left;
-  border: none;
+.Add-Person-Button {
+  display: flex;
+  padding:0.7em 1.4em;
+  margin:10px auto;
+  width: 150px;
+  border-radius:0.15em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  text-transform:uppercase;
+  font-weight:400;
+  color:#FFFFFF;
+  background-color:#3369ff;
+  box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+  text-align:center;
+  align-items: center;
+  align-content:center;
+  justify-content: center;
+  position:relative;
 }
 
 table {
@@ -30,6 +44,9 @@ tr:nth-of-type(even) {
   background:rgb(211, 211, 211)
 }
 
+input {
+  width: 300px;
+}
 
 
 
@@ -84,14 +101,6 @@ tr:nth-of-type(even) {
   width: 400px;
 }
 
-.Add-Person {
-  display: flex;
-  margin: auto;
-  width: 100px;
-  align-items: center;
-  justify-content: 'center';
-}
-
 .Modal {
   position: fixed;
   overflow: hidden;
@@ -113,7 +122,54 @@ tr:nth-of-type(even) {
 .Form {
   display:flex;
   flex-direction: column;
+  align-items: center;
   background: white;
-  width: 300px;
-  height: 500px;
+  width: 500px;
+  height: 600px;
 }
+
+.Column-Button {
+  display: flex;
+  width: 100%;
+  font-family:'Roboto',sans-serif;
+  text-transform:uppercase;
+  text-align:center;
+  align-items: center;
+  align-content:center;
+  justify-content: flex-start;
+  position:relative;
+  border:none;
+  outline: none;
+  background: rgb(170, 170, 170);
+}
+
+.form-button1 {
+  display: flex;
+  padding:0.7em 1.4em;
+  margin:10px auto;
+  width: 150px;
+  border-radius:0.15em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  text-transform:uppercase;
+  font-weight:400;
+  color:#FFFFFF;
+  background-color:#3369ff;
+  box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+  text-align:center;
+  align-items: center;
+  align-content:center;
+  justify-content: center;
+  position:relative;
+}
+
+.form-button1:active {
+  top: 0.1em;
+}
+/* @media all and (max-width:30em){
+  .form-button1{
+    display:block;
+    margin:0.4em auto;
+  }
+} */

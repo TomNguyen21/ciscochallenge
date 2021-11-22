@@ -1,4 +1,5 @@
-let employeeData = [
+module.exports = {
+  employeeData: [
   {
     "name": "Mike Potts",
     "jobTitle": "CEO",
@@ -72,8 +73,9 @@ let employeeData = [
     "gender": "Female"
   }
 ]
+}
 
-export default employeeData;
+// export default employeeData;
 
-
+// module.export
 

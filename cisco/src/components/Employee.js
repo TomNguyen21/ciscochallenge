@@ -2,9 +2,6 @@ import React from 'react';
 
 
 let Employee = (props) => {
-  let rowStyle = {
-
-  }
   return (
     <tr>
       <td>{props.employee.name}</td>
