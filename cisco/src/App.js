@@ -2,19 +2,22 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
 import EmployeeTable from './components/EmployeeTable.js';
-import employeeData from './components/mockData.js';
 import Modal from './components/AddPersonModal.js';
 
 function App() {
-  let [ employees, setEmployees ] = useState(employeeData);
+  let [ employees, setEmployees ] = useState([]);
   let [ showModal, setShowModal ] = useState(false);
   let jobTypes = {};
   let genderTypes = {};
 
-  const addPerson = (person) => {
-    setEmployees([person, ...employees]);
-    jobType();
-  }
+  useEffect(() => {
+    fetch("/employees", {
+      method: 'GET',
+    })
+      .then((res) => res.json())
+      .then((data) => setEmployees(data))
+  }, []);
+
   const jobTypeData = {
     labels: [],
     datasets: [
@@ -69,12 +72,10 @@ function App() {
   }
   jobType();
 
-
   return (
     <div className="App" >
-
-      <button className="Add-Person" onClick={() => setShowModal(true)}>Add Person</button>
-      <Modal show={showModal} onClose={ () => setShowModal(false)} addPerson={ (e) => addPerson(e)}/>
+      <button className="Add-Person-Button" onClick={() => setShowModal(true)}>Add Person</button>
+      <Modal show={showModal} onClose={ () => setShowModal(false)}/>
       <div className="Table" style={{display: "inline-flex", justifyContent: "center"}}>
       <EmployeeTable employees={employees}/>
       </div>
