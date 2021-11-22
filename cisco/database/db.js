@@ -8,15 +8,14 @@ mongoose.connect('mongodb://localhost/employees');
 // // mongoose.connect('mongodb://database:27017/morePlaces');
 // mongoose.connect('mongodb://localhost/morePlaces');
 
-const Employee = mongoose.Schema({
-  employeeId: Number,
+const employees = mongoose.Schema({
   name: String,
   jobTitle: String,
   tenure: Number,
   gender: String,
 });
 
-const employee = mongoose.model('Employee', Employee);
+const employee = mongoose.model('Employee', employees);
 
 const getEmployees = (req, callback) => {
   employee.find({}, (err, results) => {
@@ -24,15 +23,13 @@ const getEmployees = (req, callback) => {
       callback(err);
     } else {
       let newArray = [];
-      for (let i = 0; i < results[0].similarPlaces.length; i += 1) {
         employee.find({}, (err, result) => {
           if (err) {
             callback(err);
           } else {
-            newArray.push(result[0]);
+            newArray.push(...result);
           };
         });
-      };
       setTimeout( () => {
         callback(null, newArray);
       }, 1000)
@@ -40,5 +37,19 @@ const getEmployees = (req, callback) => {
   })
 }
 
+const addEmployee = (req, callback) => {
+  const newEmployee = new employee({
+    name: req.name,
+    jobTitle: req.jobTitle,
+    tenure: req.tenure,
+    gender: req.gender,
+  });
+  newEmployee.save(newEmployee);
+  setTimeout( () => {
+    callback(null, 'done!')
+  })
+}
+
 module.exports.getEmployees = getEmployees;
+module.exports.addEmployee = addEmployee;
 module.exports.employee = employee;
