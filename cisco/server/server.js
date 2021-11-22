@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-// const db = require('../database/index.js');
+const db = require('../database/db.js');
 
 const PORT = 3003;
 
@@ -12,12 +12,20 @@ let logRequests = (req, res, next) => {
   next();
 }
 app.use(logRequests);
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 
 
 // create routes
-
+app.get('/', (req, res) => {
+  db.getEmployees(req.query, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.status(200).send(results);
+    }
+  })
+})
 
 
 
