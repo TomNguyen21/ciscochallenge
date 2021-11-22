@@ -1,32 +1,35 @@
 body {
   font-family: 'Open Sans', sans-serif;
 }
-
+.ButtonDiv {
+  display: flex;
+  align-items: flex-end;
+}
 .Add-Person-Button {
   display: flex;
   padding:0.7em 1.4em;
-  margin:10px auto;
+  margin:10px 15% 10px auto;
   width: 150px;
-  border-radius:0.15em;
+  border: none;
+  border-radius:5em;
   box-sizing: border-box;
   text-decoration:none;
   font-family:'Roboto',sans-serif;
-  text-transform:uppercase;
-  font-weight:400;
+  font-weight:700;
   color:#FFFFFF;
-  background-color:#3369ff;
-  box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+  background-color:rgb(7, 83, 146);
   text-align:center;
   align-items: center;
   align-content:center;
   justify-content: center;
+  align-self: flex-end;
   position:relative;
 }
 
 table {
   border: solid 2px black;
   border-collapse: collapse;
-  margin-top: 50px;
+  margin-top: 20px;
   width: 1000px;
 }
 
@@ -37,7 +40,7 @@ td, th {
 }
 
 th {
-  background: rgb(170, 170, 170);
+  background: rgb(170, 170, 170);;
 }
 
 tr:nth-of-type(even) {
@@ -45,10 +48,13 @@ tr:nth-of-type(even) {
 }
 
 input {
-  width: 300px;
+  width: 327px;
+  height: 48px;
 }
 
-
+select, option {
+  width: 300px;
+}
 
 .App {
   text-align: center;
@@ -124,14 +130,17 @@ input {
   flex-direction: column;
   align-items: center;
   background: white;
+  border-radius: 1em;
   width: 500px;
-  height: 600px;
+  height: 350px;
+  padding: 15px 0 15px 0;
 }
 
 .Column-Button {
   display: flex;
   width: 100%;
   font-family:'Roboto',sans-serif;
+  font-weight: 700;
   text-transform:uppercase;
   text-align:center;
   align-items: center;
@@ -148,15 +157,14 @@ input {
   padding:0.7em 1.4em;
   margin:10px auto;
   width: 150px;
-  border-radius:0.15em;
+  border:none;
+  border-radius:5em;
   box-sizing: border-box;
   text-decoration:none;
   font-family:'Roboto',sans-serif;
-  text-transform:uppercase;
-  font-weight:400;
+  font-weight:700;
   color:#FFFFFF;
-  background-color:#3369ff;
-  box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+  background-color:rgb(7, 83, 146);
   text-align:center;
   align-items: center;
   align-content:center;
@@ -167,9 +175,20 @@ input {
 .form-button1:active {
   top: 0.1em;
 }
-/* @media all and (max-width:30em){
-  .form-button1{
-    display:block;
-    margin:0.4em auto;
-  }
-} */
+
+.labelName {
+  display: flex;
+  width: 66%;
+  padding: 10px;
+  font-weight: 700;
+}
+
+.close-button {
+  background: white;
+  border: none;
+  color: blue;
+}
+
+.close-button:active {
+  top: 0.1em;
+}

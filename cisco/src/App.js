@@ -29,6 +29,7 @@ function App() {
           '#be79ff',
           '#f2c94c',
           '#50cc85',
+          '#A9C5A0',
         ],
         hoverBackgroundColor: [
         '#ce4c4c',
@@ -36,6 +37,7 @@ function App() {
         '#8f59c1',
         '#c5a441',
         '#3d9f67',
+        '#758173'
         ],
         data: []
       }
@@ -74,6 +76,7 @@ function App() {
 
   return (
     <div className="App" >
+      <h2>Corporate Employees</h2>
       <button className="Add-Person-Button" onClick={() => setShowModal(true)}>Add Person</button>
       <Modal show={showModal} onClose={ () => setShowModal(false)}/>
       <div className="Table" style={{display: "inline-flex", justifyContent: "center"}}>
@@ -86,14 +89,15 @@ function App() {
               className='Chart'
               data={jobTypeData}
               options={{
-                title:{
-                  display:true,
-                  text:'Employees by Job Type',
-                  fontSize:20
-                },
-                legend:{
-                  display:true,
-                  position:'right'
+                plugins:{
+                  title:{
+                    display:true,
+                    text:'Employees by Job Type',
+                    fontSize:20,
+                  },
+                  legend:{
+                    display:false,
+                  }
                 }
               }}
             />
@@ -103,14 +107,15 @@ function App() {
               className="Chart"
               data={genderData}
               options={{
-                title:{
-                  display:true,
-                  text:'Employees by Gender',
-                  fontSize:20
-                },
-                legend:{
-                  display:true,
-                  position:'left'
+                plugins:{
+                  title:{
+                    display:true,
+                    text:'Employees by Gender',
+                    fontSize:20
+                  },
+                  legend:{
+                    display:false,
+                  }
                 },
                 responsive: true,
                 maintainAspectRatio: false

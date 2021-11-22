@@ -31,17 +31,17 @@ let Modal = (props) => {
   return (
     <form className={"Modal"} onSubmit={handleSubmit}>
       <div className={'Form'}>
-        <label>Name</label>
-        <input type="text" name="name" onChange={(e) => handleChange(e)}/>
-        <label>Job Title</label>
-        <input type="text" name="jobTitle" onChange={(e) => handleChange(e)}/>
-        <label>Tenure</label>
-        <input type="number" name="tenure" onChange={(e) => handleChange(e)}/>
-        <label>Gender</label>
-        <input type="text" name="gender" onChange={(e) => handleChange(e)}/>
+        <label className={'labelName'}>Name</label>
+        <input type="text" placeholder="Name" name="name" onChange={(e) => handleChange(e)}/>
+        <label className={'labelName'}>Job Title</label>
+        <input type="text" placeholder="Job Title" name="jobTitle" onChange={(e) => handleChange(e)}/>
+        <label className={'labelName'}>Tenure</label>
+        <input type="number" placeholder="Tenure" name="tenure" onChange={(e) => handleChange(e)}/>
+        <label className={'labelName'}>Gender</label>
+        <input type="option" placeholder="Gender" name="gender" onChange={(e) => handleChange(e)}/>
         <div className={"Modal-Buttons"}>
           <button className={"form-button1"} type="submit" value="Submit">Add Person</button>
-          <button className={"form-button1"} type="button" onClick={() => props.onClose()}>Close</button>
+          <button className={"close-button"} type="button" onClick={() => props.onClose()}>Close</button>
         </div>
       </div>
     </form>
